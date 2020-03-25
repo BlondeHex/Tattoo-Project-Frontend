@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
-import test from './test'
+import loginReduce from './loginReduce'
 
 export const appReducer = combineReducers(
   {
-    test
+    loginReduce
   }
 )
 

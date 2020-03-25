@@ -1,7 +1,9 @@
 import {createStore, applyMiddleware } from 'redux';
-import {rootReducer} from '../reducers/index'
-import test from '../reducers/test'
 import { composeWithDevTools } from 'redux-devtools-extension';
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 
-export const store = createStore(test, composeWithDevTools(
-  applyMiddleware()));
+import {rootReducer} from '../reducers/index'
+
+export const store = createStore(rootReducer, composeWithDevTools(
+  applyMiddleware(thunk, logger)));

@@ -1,17 +1,36 @@
 import React from 'react';
-import {useSelector, useDispatch} from 'react-redux'
-import {show} from '../action/test'
-import { bindActionCreators } from "redux";
+import {useState} from 'react';
+
+import {loginUser} from '../action/loginAction'
+import {useActions} from '../hooks/useAction'
 
 
 function AuthenticationPage() {
-  const counter = useSelector(state => state.counter);
-  const dispatch = useDispatch()
+
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+
+  //Alternative bindActionCreators
+  const [submitAction] = useActions([loginUser]);
+  
+  const submit = () => {
+    if(login!==""&&password!==""){
+      submitAction(login,password)
+    }
+  }
+
   return(
     <div>
-      <button onClick={() => dispatch(show())}>click</button>
-      {counter}
+      <label>Login: </label>
+      <input placeholder="login" onChange={e => setLogin(e.target.value)}/>
+      <br/>
+      <label>Password: </label>
+      <input placeholder="password" onChange={e => setPassword(e.target.value)}/>
+      <br/>
+      <button onClick={submit}>Submit</button>
     </div>
   )
 }
+
+
 export default AuthenticationPage;
