@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const RouterContext = React.createContext({});
+export const RouterContext = React.createContext({});
 
-const CustomBrowserRoute =({children}) => (
+const CustomBrowserRouter = ({ children }) => (
   <BrowserRouter>
     <Route>
       {routeProps => (
@@ -14,10 +14,10 @@ const CustomBrowserRoute =({children}) => (
       )}
     </Route>
   </BrowserRouter>
-)
+);
 
-CustomBrowserRoute.propTypes = {
+CustomBrowserRouter.propTypes = {
   children: PropTypes.object.isRequired
-}
+};
 
-export default CustomBrowserRoute;
+export default CustomBrowserRouter;

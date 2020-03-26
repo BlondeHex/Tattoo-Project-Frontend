@@ -1,6 +1,6 @@
 import React from 'react'
 
-function HomePageTwo(){
+function UserPage(){
   return(
     <h1>
       Page for User
@@ -8,4 +8,4 @@ function HomePageTwo(){
   )
 }
 
-export default HomePageTwo
+export default UserPage

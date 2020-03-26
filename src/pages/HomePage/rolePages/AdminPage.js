@@ -1,6 +1,6 @@
 import React from 'react'
 
-function HomePageOne(){
+function AdminPage(){
   return(
     <h1>
       Page from Admin
@@ -8,4 +8,4 @@ function HomePageOne(){
   )
 }
 
-export default HomePageOne;
+export default AdminPage;

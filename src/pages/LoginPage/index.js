@@ -1,8 +1,8 @@
 import React from 'react';
 import {useState} from 'react';
 
-import {loginUser} from '../action/login'
-import {useActions} from '../hooks/useAction'
+import {loginUser} from '../../actions/loginActions'
+import {useActions} from '../../hooks/useAction'
 
 
 function AuthenticationPage() {

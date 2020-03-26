@@ -1,15 +1,17 @@
 import React from 'react'
-import HomePageOne from '../HomePage/HomePageOne'
-import HomePageTwo from '../HomePage/HomePageTwo'
 import { useSelector } from 'react-redux'
+
+import AdminPage from './rolePages/AdminPage'
+import UserPage from './rolePages/UserPage'
+
 
 const HomePage = () => {
   const role = useSelector(state=>(state.userReduce.user.role));
   switch(role) {
     case 1:
-      return <HomePageOne/>;
+      return <AdminPage/>;
     case 2:
-      return <HomePageTwo/>
+      return <UserPage/>
     default: 
       return null
   }

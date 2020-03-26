@@ -4,10 +4,10 @@ import { Route, Redirect } from "react-router-dom";
 import Axios from "axios";
 import Cookies from "js-cookie";
 import PropTypes from "prop-types";
+import { useDispatch } from 'react-redux'
 
 import {GET_USER_REQUEST} from '../constants/api'
-import { useDispatch } from 'react-redux'
-import {add, del} from '../action/user'
+import {add, del} from '../actions/userActions'
 
 
 const PrivateRoute = ({component: Component, ...rest}) => {
