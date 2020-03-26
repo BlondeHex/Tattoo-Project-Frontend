@@ -1,9 +1,11 @@
 import {combineReducers} from 'redux';
-import loginReduce from './loginReduce'
+import loginReduce from './login'
+import userReduce from './user'
 
 export const appReducer = combineReducers(
   {
-    loginReduce
+    loginReduce,
+    userReduce
   }
 )
 

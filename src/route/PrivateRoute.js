@@ -1,55 +1,61 @@
 import React from 'react'
-import {useEffect, setState} from 'react'
+import {useEffect, useState} from 'react'
 import { Route, Redirect } from "react-router-dom";
 import Axios from "axios";
 import Cookies from "js-cookie";
 import PropTypes from "prop-types";
 
 import {GET_USER_REQUEST} from '../constants/api'
+import { useDispatch } from 'react-redux'
+import {add, del} from '../action/user'
 
 
 const PrivateRoute = ({component: Component, ...rest}) => {
-  const [user, setUser] = setState("");
-  const [isLoading, setIsLoading] = setState(false);
-  const [isError, setIsError] = setState(false);
+  const [user, setUser] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const dispatch = useDispatch();
 
-  const fetchUser = async () => {
+  useEffect(() =>  {
+    const fetchUser = async () => {
       setIsLoading(true);
       setIsError(false);
       try {
-        const response = Axios.get(GET_USER_REQUEST, {
+        const response = await Axios.get(GET_USER_REQUEST, {
           headers: { Authorization: Cookies.get("token") }
-        })
-          setUser(response.user);
+        });
+            
+        setUser(response.data.user);
+        dispatch(add(response.data.user));
 
       } catch (error){
         setIsError(true)
+        setUser();
+        dispatch(del())
+        Cookies.remove('token');
       }
-
     setIsLoading(false)
   }
+  fetchUser();
+  }, []);
 
+  
 
-  useEffect( () => {
-    fetchUser()
-    if (isError) 
-      return (
-        <Redirect to="/"/>
-      )
+  if (isError) 
+    return (
+      <Redirect to="/"/>
+    )
 
     if (isLoading) 
-      return <div>Is Loading</div>
-
-    return (
-      <Route 
-        {...rest}
-        render = {props =>
-          user!== null? (<Component {...props}/>):(<Redirect to="/"/>)
-        }
+    return (<div>Is Loading</div>)
+  return (
+    <Route 
+      {...rest}
+      render = {props =>
+        user!== null? <Component {...props}/>:(<Redirect to="/"/>)
+      }
       />
-    )
-    
-  })
+  )
 }
 
 PrivateRoute.propTypes = {

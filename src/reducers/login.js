@@ -1,4 +1,4 @@
-import login from '../constants/loginConstants'
+import login from '../constants/login'
 
 const initialState = {
   user: null,
@@ -17,7 +17,7 @@ const loginReduce = (state = initialState, action) => {
         return {...state, isLoading: false, error: action.error };
 
       case login.LOGIN_SUCCESS:
-        return {...state, user: action.payload, isLoading: false };
+        return {...state, isLoading: false };
         
       default:
         return state

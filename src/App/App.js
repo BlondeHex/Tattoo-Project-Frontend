@@ -5,8 +5,8 @@ import { Route, Switch, Redirect } from "react-router-dom";
 
 import CustomBrowserRoute from '../route/CustomBrowserRoute'
 import AuthenticationPage from '../AuthenticationPage/index'
-import HomePageOne from '../HomePage/HomePageOne'
-import HomePageTwo from '../HomePage/HomePageTwo'
+import PrivateRoute from '../route/PrivateRoute'
+import HomePage from '../HomePage/HomePage'
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
       <CustomBrowserRoute>
         <Switch>
           <Route exact path='/' component={AuthenticationPage}/>
+          <PrivateRoute path='/home' component={HomePage}/>
           <Redirect from="*" to='/' />
         </Switch>
       </CustomBrowserRoute>

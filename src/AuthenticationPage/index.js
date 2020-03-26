@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
 
-import {loginUser} from '../action/loginAction'
+import {loginUser} from '../action/login'
 import {useActions} from '../hooks/useAction'
 
 
