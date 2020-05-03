@@ -10,6 +10,7 @@ import {GET_USER_REQUEST} from '../constants/api'
 import {add, del} from '../actions/userActions'
 
 
+
 const PrivateRoute = ({component: Component, ...rest}) => {
   const [user, setUser] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -29,7 +30,8 @@ const PrivateRoute = ({component: Component, ...rest}) => {
         dispatch(add(response.data.user));
 
       } catch (error){
-        setIsError(true)
+        setIsError(false)
+        //change
         setUser();
         dispatch(del())
         Cookies.remove('token');
@@ -48,6 +50,7 @@ const PrivateRoute = ({component: Component, ...rest}) => {
 
     if (isLoading) 
     return (<div>Is Loading</div>)
+    
   return (
     <Route 
       {...rest}

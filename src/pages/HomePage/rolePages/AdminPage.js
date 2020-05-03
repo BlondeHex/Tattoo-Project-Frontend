@@ -1,10 +1,38 @@
 import React from 'react'
+import {useState} from 'react'
+
+import {HomeWrapper, Menu} from '../HomePageStyles'
+import TableUsers from './components/TableUsers'
+import Header from './components/Header'
 
 function AdminPage(){
+
+  const [isActive, setIsActive] = useState([true,false]);
+
+//Change
+  let handleMenu = (n) =>{
+    let test = (isActive.map((el)=>{
+        el = false;
+  }))
+  test[n] = true;
+  setIsActive(test);
+  };
+
   return(
-    <h1>
-      Page from Admin
-    </h1>
+    <HomeWrapper>
+      <Header/>
+      <Menu>
+        <button onClick={()=>{handleMenu(0)}} className={isActive[0]?'active':''}> 
+          All users
+        </button>
+        <button onClick={()=>{handleMenu(1)}} className={isActive[1]?'active':''}> 
+          Show Info
+        </button>
+      </Menu>
+
+      {isActive[0]?<TableUsers/>:''}
+      
+    </HomeWrapper>
   )
 }
 

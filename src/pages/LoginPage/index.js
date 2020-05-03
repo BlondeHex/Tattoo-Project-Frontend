@@ -1,9 +1,10 @@
 import React from 'react';
 import {useState} from 'react';
+import { useHistory } from "react-router-dom";
 
 import {loginUser} from '../../actions/loginActions'
 import {useActions} from '../../hooks/useAction'
-
+import {LoginPage, Button, FormWrapper, Logo, InputFormWrapper} from './LoginPageStyles'
 
 function AuthenticationPage() {
 
@@ -12,6 +13,8 @@ function AuthenticationPage() {
 
   //Alternative bindActionCreators
   const [submitAction] = useActions([loginUser]);
+
+  const history = useHistory();
   
   const submit = () => {
     if(login!==""&&password!==""){
@@ -20,15 +23,26 @@ function AuthenticationPage() {
   }
 
   return(
-    <div>
-      <label>Login: </label>
-      <input placeholder="login" onChange={e => setLogin(e.target.value)}/>
-      <br/>
-      <label>Password: </label>
-      <input placeholder="password" onChange={e => setPassword(e.target.value)}/>
-      <br/>
-      <button onClick={submit}>Submit</button>
-    </div>
+    <LoginPage>
+
+      <Logo src={process.env.PUBLIC_URL + '/image/logo.svg'} alt="Logo" />
+
+      <FormWrapper>
+        <InputFormWrapper>
+          <input onChange={e => setLogin(e.target.value)}/>
+          <label>Login</label>
+        </InputFormWrapper>
+
+        <InputFormWrapper>
+          <input onChange={e => setPassword(e.target.value)}/>
+          <label>Password</label>
+        </InputFormWrapper>
+      
+      {/* <Button onClick={submit}>CONNECT</Button> */}
+      <Button onClick={()=>history.push("/home")}>CONNECT</Button>
+      </FormWrapper>
+
+    </LoginPage>
   )
 }
 
