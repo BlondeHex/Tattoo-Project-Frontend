@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC, SFC } from 'react';
 import { Route, Switch, Redirect } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/createStore";
@@ -7,9 +7,9 @@ import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import CustomBrowserRouter from "./helpers/CustomBrowserRouter";
 import { LOGIN, HOME } from "./constants/routes";
-import PrivateRoute from './helpers/PrivateRoute'
+import PrivateRoute from "./helpers/PrivateRoute";
 
-function App() {
+const App: FC = () => {
   return (
     <Provider store={store}>
       <CustomBrowserRouter>
@@ -21,6 +21,6 @@ function App() {
       </CustomBrowserRouter>
     </Provider>
   );
-}
+};
 
 export default App;

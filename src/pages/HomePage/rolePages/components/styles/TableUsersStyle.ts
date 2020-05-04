@@ -1,6 +1,11 @@
-import styled, {keyframes} from "styled-components";
-import {BACKGROUND_COLOR_MAIN, BACKGROUND_COLOR_USERLIST, WHITE_COLOR_USERLIST, MAIN_YELLOW_COLOR, MAIN_WHITE_COLOR} from '../../../../../constants/colors'
-
+import styled, { keyframes } from "styled-components";
+import {
+  BACKGROUND_COLOR_MAIN,
+  BACKGROUND_COLOR_USERLIST,
+  WHITE_COLOR_USERLIST,
+  MAIN_YELLOW_COLOR,
+  MAIN_WHITE_COLOR,
+} from "../../../../../constants/colors";
 
 const ContainerListUsers = styled.main`
   margin: 15px 20px;
@@ -14,11 +19,10 @@ const ContainerListUsers = styled.main`
   }
 `;
 
-
 const WrapperFind = styled.div`
   text-align: left;
   height: 80px;
-  width:100%;
+  width: 100%;
 `;
 
 const Tittle = styled.span`
@@ -39,7 +43,7 @@ const InputFind = styled.input`
   border-bottom: 1px solid ${MAIN_WHITE_COLOR};
   height: 40px;
   width: 30vw;
-  margin: 10px 2vw 0 10vw ;
+  margin: 10px 2vw 0 10vw;
   vertical-align: bottom;
 `;
 
@@ -81,11 +85,9 @@ const ButtonFind = styled.button`
   }
 `;
 
-
-
 const Table = styled.table`
-width: 100%;
-border-spacing: 0 1em;
+  width: 100%;
+  border-spacing: 0 1em;
   & tr {
     color: ${WHITE_COLOR_USERLIST};
     background-color: ${BACKGROUND_COLOR_USERLIST};
@@ -101,12 +103,12 @@ border-spacing: 0 1em;
         border-bottom-left-radius: 10px;
       }
       &:last-child {
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
-      text-align: right;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        text-align: right;
       }
     }
-  };
+  }
 `;
 
 const Icone = styled.img`
@@ -126,11 +128,11 @@ const BtnDisconnect = styled.button`
   transition-property: transform, background-color;
   transition-duration: 0.7s;
   transition-timing-function: ease;
-  &:hover:enabled{  
+  &:hover:enabled {
     cursor: pointer;
-    transform: scale(0.92,0.92);
+    transform: scale(0.92, 0.92);
   }
-  &:disabled{
+  &:disabled {
     background-color: transparent;
     border: 1px solid ${MAIN_YELLOW_COLOR};
   }
@@ -148,7 +150,7 @@ const BtnDelete = styled.button`
   transition-property: transform;
   transition-duration: 1s;
   transition-timing-function: ease;
-  &:hover{
+  &:hover {
     transform: rotate(360deg);
   }
   @media (max-width: 1024px) {
@@ -159,6 +161,14 @@ const BtnDelete = styled.button`
   }
 `;
 
-
-
-export {ContainerListUsers, InputFind, ButtonFind, WrapperFind, Table, Icone, BtnDisconnect, BtnDelete, Tittle };
+export {
+  ContainerListUsers,
+  InputFind,
+  ButtonFind,
+  WrapperFind,
+  Table,
+  Icone,
+  BtnDisconnect,
+  BtnDelete,
+  Tittle,
+};

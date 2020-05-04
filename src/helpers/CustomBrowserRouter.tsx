@@ -1,14 +1,13 @@
-import React from "react";
+import React, { FC } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import PropTypes from "prop-types";
-import history from './history';
+import history from "./history";
 
 export const RouterContext = React.createContext({});
 
-const CustomBrowserRouter = ({ children }) => (
+const CustomBrowserRouter: FC = ({ children }) => (
   <BrowserRouter>
-    <Route history={history}>
-      {routeProps => (
+    <Route {...{ history }}>
+      {(routeProps) => (
         <RouterContext.Provider value={routeProps}>
           {children}
         </RouterContext.Provider>
@@ -16,9 +15,5 @@ const CustomBrowserRouter = ({ children }) => (
     </Route>
   </BrowserRouter>
 );
-
-CustomBrowserRouter.propTypes = {
-  children: PropTypes.object.isRequired
-};
 
 export default CustomBrowserRouter;
