@@ -1,5 +1,10 @@
 import styled from "styled-components";
-import {BACKGROUND_COLOR_HEADER,  WHITE_COLOR_HEADER, BACKGROUND_COLOR_HEADER_EL, MAIN_YELLOW_COLOR} from '../../../../../constants/colors'
+import {
+  BACKGROUND_COLOR_HEADER,
+  WHITE_COLOR_HEADER,
+  BACKGROUND_COLOR_HEADER_EL,
+  MAIN_YELLOW_COLOR,
+} from "../../../../../constants/colors";
 
 const HeaderWrapper = styled.header`
   display: grid;
@@ -44,4 +49,4 @@ const ButtonExit = styled.button`
   }
 `;
 
-export { HeaderWrapper, Logo, UserInfo, ButtonExit};
+export { HeaderWrapper, Logo, UserInfo, ButtonExit };

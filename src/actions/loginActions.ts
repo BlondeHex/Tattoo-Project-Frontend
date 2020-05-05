@@ -1,29 +1,31 @@
 import axios from "axios";
 import { LOGIN_REQUEST } from "../constants/api";
+import { Dispatch } from "redux";
 
 export const LOGIN_LOADING = "login_loading";
 export const LOGIN_SUCCESS = "login_success";
 export const LOGIN_FAIL = "login_fail";
 
-export const loginUser = (login, password) => async dispatch => {
+export const loginUser = (login: string, password: string) => async (
+  dispatch: Dispatch
+) => {
   dispatch({
-    type: LOGIN_LOADING
+    type: LOGIN_LOADING,
   });
 
   try {
     const res = await axios.post(LOGIN_REQUEST, {
       login,
-      password
+      password,
     });
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: res.data
+      payload: res.data,
     });
   } catch (error) {
     dispatch({
       type: LOGIN_FAIL,
-      error
+      error,
     });
   }
 };
-

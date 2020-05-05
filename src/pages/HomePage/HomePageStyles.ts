@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-import {BACKGROUND_COLOR_BASE, BACKGROUND_COLOR_NAV, MAIN_YELLOW_COLOR} from '../../constants/colors'
+import {
+  BACKGROUND_COLOR_BASE,
+  BACKGROUND_COLOR_NAV,
+  MAIN_YELLOW_COLOR,
+} from "../../constants/colors";
 
 const HomeWrapper = styled.div`
   display: grid;
@@ -21,32 +25,32 @@ const Menu = styled.nav`
   grid-template-rows: 40px 40px 40px;
   grid-row-gap: 10px;
   padding: 20px 0 0 27%;
-  
+
   background: ${BACKGROUND_COLOR_NAV};
-  box-shadow: 5px 0px 4px rgba(0, 0, 0, 0.03);
+  box-shadow: 5px 0 4px rgba(0, 0, 0, 0.03);
 
   & button {
-    cursor:pointer;
+    cursor: pointer;
     text-align: center;
     background-color: transparent;
-    opacity:0.6;
+    opacity: 0.6;
     border: none;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     outline: none;
-    width:100%;
+    width: 100%;
     font-size: 12px;
     transition-property: background-color, font-size, opacity;
     transition-duration: 0.2s;
     transition-timing-function: ease;
 
     &:not(.active):hover {
-      opacity:0.9;
-      font-size:13px
+      opacity: 0.9;
+      font-size: 13px;
     }
 
     &.active {
-      opacity:1;
+      opacity: 1;
       border-top-left-radius: 10px;
       border-bottom-left-radius: 10px;
       background-color: ${MAIN_YELLOW_COLOR};
@@ -54,9 +58,8 @@ const Menu = styled.nav`
     }
   }
   @media (max-width: 768px) {
-    display:none;
+    display: none;
   }
 `;
 
-
-export {HomeWrapper, Menu};
+export { HomeWrapper, Menu };
