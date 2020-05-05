@@ -12,109 +12,10 @@ import {
   BtnDelete,
   Tittle,
 } from "./styles/TableUsersStyle";
-import { element } from "prop-types";
-
-const fakeUsers = [
-  {
-    login: "User12345",
-    role: "Admin",
-    status: {
-      info: "Online",
-      bool: false,
-    },
-  },
-  {
-    login: "TattoMater9999",
-    role: "Master",
-    status: {
-      info: "Online",
-      bool: false,
-    },
-  },
-  {
-    login: "User",
-    role: "User",
-    status: {
-      info: "Offline",
-      bool: true,
-    },
-  },
-  {
-    login: "Studia555",
-    role: "Admin",
-    status: {
-      info: "Online",
-      bool: false,
-    },
-  },
-  {
-    login: "User12345",
-    role: "Admin",
-    status: {
-      info: "Online",
-      bool: false,
-    },
-  },
-  {
-    login: "TattoMater9999",
-    role: "Master",
-    status: {
-      info: "Online",
-      bool: false,
-    },
-  },
-  {
-    login: "User",
-    role: "User",
-    status: {
-      info: "Offline",
-      bool: true,
-    },
-  },
-  {
-    login: "Studia555",
-    role: "Admin",
-    status: {
-      info: "Online",
-      bool: false,
-    },
-  },
-  {
-    login: "User12345",
-    role: "Admin",
-    status: {
-      info: "Online",
-      bool: false,
-    },
-  },
-  {
-    login: "TattoMater9999",
-    role: "Master",
-    status: {
-      info: "Online",
-      bool: false,
-    },
-  },
-  {
-    login: "User",
-    role: "User",
-    status: {
-      info: "Offline",
-      bool: true,
-    },
-  },
-  {
-    login: "Studia555",
-    role: "Admin",
-    status: {
-      info: "Online",
-      bool: false,
-    },
-  },
-];
+import {getUserList} from '../../../../data/fakeUserList'
 
 function TableUsers() {
-  const [users, setUsers] = useState(fakeUsers);
+  const [users, setUsers] = useState(getUserList(5));
 
   const handleDisconnect = (n: number) => {
     let test = Array.from(users);
@@ -137,7 +38,7 @@ function TableUsers() {
       <td>
         {" "}
         <Icone
-          src={process.env.PUBLIC_URL + "/image/user-icone.svg"}
+          src={el.avatar}
           alt="Icone"
         />
       </td>

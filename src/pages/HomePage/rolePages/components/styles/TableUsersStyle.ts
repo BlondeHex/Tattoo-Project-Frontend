@@ -114,6 +114,7 @@ const Table = styled.table`
 const Icone = styled.img`
   height: 40px;
   vertical-align: middle;
+  border-radius: 50%;
 `;
 
 const BtnDisconnect = styled.button`
