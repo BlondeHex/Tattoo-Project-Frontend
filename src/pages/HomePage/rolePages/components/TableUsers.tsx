@@ -12,7 +12,7 @@ import {
   BtnDelete,
   Tittle,
 } from "./styles/TableUsersStyle";
-import {getUserList} from '../../../../data/fakeUserList'
+import { getUserList } from "../../../../data/fakeUserList";
 
 function TableUsers() {
   const [users, setUsers] = useState(getUserList(5));
@@ -37,10 +37,7 @@ function TableUsers() {
     <tr key={index}>
       <td>
         {" "}
-        <Icone
-          src={el.avatar}
-          alt="Icone"
-        />
+        <Icone src={el.avatar} alt="Icone" />
       </td>
       <td> {el.login}</td>
       <td> {el.role} </td>
