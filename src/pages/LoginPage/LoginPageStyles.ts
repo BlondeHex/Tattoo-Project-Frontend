@@ -1,5 +1,10 @@
 import styled from "styled-components";
-import {BACKGROUND_COLOR_BASE, GREY_COLOR_FORM, WHITE_COLOR_FORM, MAIN_YELLOW_COLOR} from '../../constants/colors'
+import {
+  BACKGROUND_COLOR_BASE,
+  GREY_COLOR_FORM,
+  WHITE_COLOR_FORM,
+  MAIN_YELLOW_COLOR,
+} from "../../constants/colors";
 
 const LoginPage = styled.div`
   background: ${BACKGROUND_COLOR_BASE};
@@ -11,7 +16,7 @@ const LoginPage = styled.div`
     box-sizing: border-box;
     grid-template-columns: 1fr;
     grid-template-rows: 100px 1fr;
-    padding:5% 3%;
+    padding: 5% 3%;
   }
 `;
 
@@ -24,26 +29,26 @@ const Logo = styled.img`
 
 const FormWrapper = styled.div`
   position: relative;
-  width:100%;
+  width: 100%;
   margin: auto;
   text-align: center;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -25%;
     left: 0;
-    height:150%;
+    height: 150%;
     border: 1px solid #7b7c891c;
     @media (max-width: 768px) {
-      display:none;
+      display: none;
     }
   }
 `;
 
 const InputFormWrapper = styled.div`
   position: relative;
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
 
   & input {
     outline: none;
@@ -56,13 +61,14 @@ const InputFormWrapper = styled.div`
     background-color: inherit;
     border: 1px solid ${GREY_COLOR_FORM};
     border-radius: 7px;
-    text-indent: 15px; 
+    text-indent: 15px;
     font-size: 15px;
     transition-property: border;
     transition-duration: 0.2s;
     transition-timing-function: ease;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       border: 1px solid ${WHITE_COLOR_FORM};
     }
     &:focus ~ label {
@@ -110,11 +116,9 @@ const Button = styled.button`
     color: inherit;
   }
   @media (max-width: 768px) {
-      height: 55px;
-      width: 60vw;
+    height: 55px;
+    width: 60vw;
   }
 `;
-
-
 
 export { LoginPage, Button, FormWrapper, Logo, InputFormWrapper };

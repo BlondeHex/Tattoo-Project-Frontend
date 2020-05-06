@@ -111,9 +111,10 @@ const Table = styled.table`
   }
 `;
 
-const Icone = styled.img`
+const Icon = styled.img`
   height: 40px;
   vertical-align: middle;
+  border-radius: 50%;
 `;
 
 const BtnDisconnect = styled.button`
@@ -167,7 +168,7 @@ export {
   ButtonFind,
   WrapperFind,
   Table,
-  Icone,
+  Icon,
   BtnDisconnect,
   BtnDelete,
   Tittle,

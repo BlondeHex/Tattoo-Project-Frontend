@@ -7,118 +7,19 @@ import {
   ButtonFind,
   WrapperFind,
   Table,
-  Icone,
+  Icon,
   BtnDisconnect,
   BtnDelete,
   Tittle,
 } from "./styles/TableUsersStyle";
-import { element } from "prop-types";
-
-const fakeUsers = [
-  {
-    login: "User12345",
-    role: "Admin",
-    status: {
-      info: "Online",
-      bool: false,
-    },
-  },
-  {
-    login: "TattoMater9999",
-    role: "Master",
-    status: {
-      info: "Online",
-      bool: false,
-    },
-  },
-  {
-    login: "User",
-    role: "User",
-    status: {
-      info: "Offline",
-      bool: true,
-    },
-  },
-  {
-    login: "Studia555",
-    role: "Admin",
-    status: {
-      info: "Online",
-      bool: false,
-    },
-  },
-  {
-    login: "User12345",
-    role: "Admin",
-    status: {
-      info: "Online",
-      bool: false,
-    },
-  },
-  {
-    login: "TattoMater9999",
-    role: "Master",
-    status: {
-      info: "Online",
-      bool: false,
-    },
-  },
-  {
-    login: "User",
-    role: "User",
-    status: {
-      info: "Offline",
-      bool: true,
-    },
-  },
-  {
-    login: "Studia555",
-    role: "Admin",
-    status: {
-      info: "Online",
-      bool: false,
-    },
-  },
-  {
-    login: "User12345",
-    role: "Admin",
-    status: {
-      info: "Online",
-      bool: false,
-    },
-  },
-  {
-    login: "TattoMater9999",
-    role: "Master",
-    status: {
-      info: "Online",
-      bool: false,
-    },
-  },
-  {
-    login: "User",
-    role: "User",
-    status: {
-      info: "Offline",
-      bool: true,
-    },
-  },
-  {
-    login: "Studia555",
-    role: "Admin",
-    status: {
-      info: "Online",
-      bool: false,
-    },
-  },
-];
+import { getUserList } from "../../../../data/fakeUserList";
 
 function TableUsers() {
-  const [users, setUsers] = useState(fakeUsers);
+  const [users, setUsers] = useState(getUserList(5));
 
   const handleDisconnect = (n: number) => {
     let test = Array.from(users);
-    test[n].status.bool = true;
+    test[n].status.isOnline = false;
     test[n].status.info = "Offline";
     setUsers(test);
   };
@@ -136,10 +37,7 @@ function TableUsers() {
     <tr key={index}>
       <td>
         {" "}
-        <Icone
-          src={process.env.PUBLIC_URL + "/image/user-icone.svg"}
-          alt="Icone"
-        />
+        <Icon src={el.avatar} alt="Icon" />
       </td>
       <td> {el.login}</td>
       <td> {el.role} </td>
@@ -147,7 +45,7 @@ function TableUsers() {
       {/* Change char to svg */}
       <td>
         <BtnDisconnect
-          disabled={el.status.bool}
+          disabled={!el.status.isOnline}
           onClick={() => {
             handleDisconnect(index);
           }}
