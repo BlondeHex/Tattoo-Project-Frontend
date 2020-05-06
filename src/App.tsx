@@ -1,4 +1,4 @@
-import React, { FC, SFC } from "react";
+import React, { FC } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/createStore";

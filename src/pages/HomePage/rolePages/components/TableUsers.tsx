@@ -7,7 +7,7 @@ import {
   ButtonFind,
   WrapperFind,
   Table,
-  Icone,
+  Icon,
   BtnDisconnect,
   BtnDelete,
   Tittle,
@@ -19,7 +19,7 @@ function TableUsers() {
 
   const handleDisconnect = (n: number) => {
     let test = Array.from(users);
-    test[n].status.bool = true;
+    test[n].status.isOnline = false;
     test[n].status.info = "Offline";
     setUsers(test);
   };
@@ -37,7 +37,7 @@ function TableUsers() {
     <tr key={index}>
       <td>
         {" "}
-        <Icone src={el.avatar} alt="Icone" />
+        <Icon src={el.avatar} alt="Icon" />
       </td>
       <td> {el.login}</td>
       <td> {el.role} </td>
@@ -45,7 +45,7 @@ function TableUsers() {
       {/* Change char to svg */}
       <td>
         <BtnDisconnect
-          disabled={el.status.bool}
+          disabled={!el.status.isOnline}
           onClick={() => {
             handleDisconnect(index);
           }}
