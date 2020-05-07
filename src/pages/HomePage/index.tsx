@@ -1,11 +1,13 @@
 import React, { FC } from "react";
-import { useSelector } from "react-redux";
 
 import AdminPage from "./rolePages/AdminPage";
-import UserPage from "./rolePages/UserPage";
 
-const HomePage: FC = () => {
-  //const role = useSelector(state=>(state.userReduce.user.role));
+export interface Props {
+  user: any;
+}
+
+const HomePage: FC<Props> = ({ user }) => {
+  //const role = user.role;
   switch (1) {
     case 1:
       return <AdminPage />;

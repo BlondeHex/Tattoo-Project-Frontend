@@ -1,9 +1,10 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, FC } from "react";
 import { useHistory } from "react-router-dom";
+import { useAsyncFn } from "react-use";
+import Cookies from "js-cookie";
 
-import { loginUser } from "../../actions/loginActions";
-import { useActions } from "../../hooks/useAction";
+import { LOGIN_REQUEST } from "../../constants/api";
+
 import {
   LoginPage,
   Button,
@@ -12,19 +13,25 @@ import {
   InputFormWrapper,
 } from "./LoginPageStyles";
 
-function AuthenticationPage() {
+const AuthenticationPage: FC = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
-  //Alternative bindActionCreators
-  const [submitAction] = useActions([loginUser]);
+  const [state, sendRequest] = useAsyncFn(async () => {
+    let requestHeaders: any = { "Content-Type": "application/json" };
+    const response = await fetch(LOGIN_REQUEST, {
+      method: "POST",
+      headers: requestHeaders,
+      body: JSON.stringify({ login, password }),
+    });
+    const result = await response.text();
+    return result;
+  }, [LOGIN_REQUEST, login, password]);
 
   const history = useHistory();
-
-  const submit = () => {
-    if (login !== "" && password !== "") {
-      submitAction(login, password);
-    }
+  const handleSubmit = () => {
+    sendRequest();
+    Cookies.set("token", String(state.value));
   };
 
   return (
@@ -43,10 +50,10 @@ function AuthenticationPage() {
         </InputFormWrapper>
 
         {/* <Button onClick={submit}>CONNECT</Button> */}
-        <Button onClick={() => history.push("/home")}>CONNECT</Button>
+        <Button onClick={handleSubmit}>CONNECT</Button>
       </FormWrapper>
     </LoginPage>
   );
-}
+};
 
 export default AuthenticationPage;

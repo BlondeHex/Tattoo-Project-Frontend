@@ -1,55 +1,38 @@
 import React, { FC } from "react";
-import { useEffect, useState } from "react";
-import { Route, Redirect, RouteComponentProps } from "react-router-dom";
-import Axios from "axios";
+import { Route, Redirect } from "react-router-dom";
+import { useAsync } from "react-use";
 import Cookies from "js-cookie";
-import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
 
 import { GET_USER_REQUEST } from "../constants/api";
-import { add, del } from "../actions/userActions";
+import HomePage from "../pages/HomePage";
 
 const PrivateRoute: FC<{
-  component: FC<RouteComponentProps>;
   path: string;
-}> = ({ component: Component, ...rest }) => {
-  const [user, setUser] = useState();
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-  const dispatch = useDispatch();
+}> = ({ ...rest }) => {
+  const { value, error, loading } = useAsync(async () => {
+    const response = await fetch(GET_USER_REQUEST, {
+      method: "POST",
+      body: JSON.stringify(Cookies.get("token")),
+    });
+    const result = await response.text();
+    return result;
+  }, [GET_USER_REQUEST]);
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      setIsLoading(true);
-      setIsError(false);
-      try {
-        const response = await Axios.get(GET_USER_REQUEST, {
-          headers: { Authorization: Cookies.get("token") },
-        });
+  console.log(error);
 
-        setUser(response.data.user);
-        dispatch(add(response.data.user));
-      } catch (error) {
-        setIsError(false);
-        //change
-        setUser(undefined);
-        dispatch(del());
-        Cookies.remove("token");
-      }
-      setIsLoading(false);
-    };
-    fetchUser();
-  }, []);
+  if (error) return <Redirect to="/" />;
 
-  if (isError) return <Redirect to="/" />;
-
-  if (isLoading) return <div>Is Loading</div>;
+  if (loading) return <div>Is Loading</div>;
 
   return (
     <Route
       {...rest}
       render={(props) =>
-        user !== null ? <Component {...props} /> : <Redirect to="/" />
+        value !== null ? (
+          <HomePage {...props} user={value} />
+        ) : (
+          <Redirect to="/" />
+        )
       }
     />
   );
