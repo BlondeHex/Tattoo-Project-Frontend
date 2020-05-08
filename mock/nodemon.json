@@ -1,0 +1,10 @@
+{
+  "ignore": [".git", "node_modules"],
+  "verbose": true,
+  "watch": ["**/*"],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "ts json",
+  "exec": "ts-node ./bin/www.ts"
+}

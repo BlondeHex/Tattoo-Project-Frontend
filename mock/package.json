@@ -1,0 +1,39 @@
+{
+  "name": "mock-server",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "up": "npm-check-updates -u && typesync && rm package-lock.json && rm -rf node_modules && npm i",
+    "prettier": "prettier --write \"./**/*.{ts,tsx,js,jsx,json}\"",
+    "start": "nodemon --config nodemon.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dayjs": "^1.8.26",
+    "express": "^4.17.1",
+    "express-delay": "^0.2.0",
+    "faker": "^4.1.0",
+    "helmet": "^3.22.0",
+    "lodash": "^4.17.15",
+    "loglevel": "^1.6.8",
+    "morgan": "^1.10.0",
+    "yup": "^0.28.5"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/faker": "^4.1.11",
+    "@types/helmet": "^0.0.46",
+    "@types/lodash": "^4.14.150",
+    "@types/morgan": "^1.9.0",
+    "@types/nodemon": "^1.19.0",
+    "@types/prettier": "^2.0.0",
+    "@types/yup": "^0.28.0",
+    "nodemon": "^2.0.3",
+    "npm-check-updates": "^4.1.2",
+    "prettier": "^2.0.5",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.8.3",
+    "typesync": "^0.6.1"
+  }
+}

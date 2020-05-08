@@ -2,6 +2,7 @@
   "name": "sdlitica-ui",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3004",
   "scripts": {
     "up": "npm-check-updates -u && typesync && rm package-lock.json && rm -rf node_modules && npm i",
     "start": "react-scripts start",
