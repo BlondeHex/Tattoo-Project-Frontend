@@ -2,12 +2,9 @@ import React, { FC } from "react";
 
 import AdminPage from "./rolePages/AdminPage";
 
-export interface Props {
-  user: any;
-}
-
-const HomePage: FC<Props> = ({ user }) => {
-  //const role = user.role;
+//In future add role enum
+//Think, parsing numder to check role isn't good
+const HomePage: FC<{ role: number }> = ({ role }) => {
   switch (1) {
     case 1:
       return <AdminPage />;

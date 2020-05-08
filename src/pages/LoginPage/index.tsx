@@ -1,7 +1,7 @@
 import React, { useState, FC } from "react";
-import { useHistory } from "react-router-dom";
 import { useAsyncFn } from "react-use";
 import Cookies from "js-cookie";
+import axios from "axios";
 
 import { LOGIN_REQUEST } from "../../constants/api";
 
@@ -17,22 +17,18 @@ const AuthenticationPage: FC = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
-  const [state, sendRequest] = useAsyncFn(async () => {
-    let requestHeaders: any = { "Content-Type": "application/json" };
-    const response = await fetch(LOGIN_REQUEST, {
-      method: "POST",
-      headers: requestHeaders,
-      body: JSON.stringify({ login, password }),
-    });
-    const result = await response.text();
-    return result;
-  }, [LOGIN_REQUEST, login, password]);
-
-  const history = useHistory();
-  const handleSubmit = () => {
-    sendRequest();
-    Cookies.set("token", String(state.value));
-  };
+  //Should return the result if only need to set token?
+  //Also token can be set using header 'Set-Cookie' in response
+  //Maybe it's better
+  const [state, sendRequest] = useAsyncFn(
+    async () =>
+      //Axios <3
+      await axios
+        .post(LOGIN_REQUEST, { login, password })
+        .then((res) => Cookies.set("token", res.data))
+        .catch((error) => console.log(error)),
+    [LOGIN_REQUEST, login, password]
+  );
 
   return (
     <LoginPage>
@@ -50,7 +46,7 @@ const AuthenticationPage: FC = () => {
         </InputFormWrapper>
 
         {/* <Button onClick={submit}>CONNECT</Button> */}
-        <Button onClick={handleSubmit}>CONNECT</Button>
+        <Button onClick={sendRequest}>CONNECT</Button>
       </FormWrapper>
     </LoginPage>
   );
