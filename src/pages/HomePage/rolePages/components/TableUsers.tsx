@@ -1,5 +1,6 @@
 import React from "react";
-import { useState } from "react";
+import { useList } from "react-use";
+import _ from "lodash";
 
 import {
   ContainerListUsers,
@@ -15,34 +16,28 @@ import {
 import { getUserList } from "../../../../data/fakeUserList";
 
 function TableUsers() {
-  const [users, setUsers] = useState(getUserList(5));
+  const [users, { updateAt, removeAt }] = useList(getUserList(15));
 
   const handleDisconnect = (n: number) => {
-    let test = Array.from(users);
-    test[n].status.isOnline = false;
-    test[n].status.info = "Offline";
-    setUsers(test);
+    let user = users[n];
+    updateAt(n, {
+      ...user,
+      status: { info: "Offline", isOnline: false },
+    });
   };
 
   const handleDelete = (n: number) => {
-    let test = Array.from(users);
-    test = test.filter((el) => {
-      return el.login !== users[n].login;
-    });
-    setUsers(test);
+    removeAt(n);
   };
 
-  //Remove
   const table = users.map((el, index) => (
     <tr key={index}>
       <td>
-        {" "}
         <Icon src={el.avatar} alt="Icon" />
       </td>
       <td> {el.login}</td>
       <td> {el.role} </td>
       <td> {el.status.info} </td>
-      {/* Change char to svg */}
       <td>
         <BtnDisconnect
           disabled={!el.status.isOnline}
