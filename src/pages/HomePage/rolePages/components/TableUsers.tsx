@@ -20,23 +20,10 @@ function TableUsers() {
 
   const handleDisconnect = (n: number) => {
     let user = users[n];
-    updateAt(
-      n,
-      //It wants to take a full object from List
-      //I couldn't find a method that would allow to change
-      //the properties of the selected object and return it
-      {
-        login: user.login,
-        avatar: user.avatar,
-        role: user.role,
-        status: { info: "Offline", isOnline: false },
-      }
-      //Think, it's not very good to do this. Probably I use the method wrong.
-      //
-      //Object.defineProperty(users[n], "status", {
-      //value: { info: "Offline", isOnline: false },
-      //})
-    );
+    updateAt(n, {
+      ...user,
+      status: { info: "Offline", isOnline: false },
+    });
   };
 
   const handleDelete = (n: number) => {
