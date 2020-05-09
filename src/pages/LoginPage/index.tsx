@@ -38,7 +38,7 @@ function AuthenticationPage() {
         </InputFormWrapper>
 
         <InputFormWrapper>
-          <input onChange={(e) => setPassword(e.target.value)} />
+          <input type="password" onChange={(e) => setPassword(e.target.value)} />
           <label>Password</label>
         </InputFormWrapper>
 
