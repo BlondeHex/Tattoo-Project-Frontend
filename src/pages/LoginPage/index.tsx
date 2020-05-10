@@ -34,11 +34,14 @@ function AuthenticationPage() {
       <FormWrapper>
         <InputFormWrapper>
           <input onChange={(e) => setLogin(e.target.value)} />
-          <label>Login</label>
+          <label>YourTattoo</label>
         </InputFormWrapper>
 
         <InputFormWrapper>
-          <input type="password" onChange={(e) => setPassword(e.target.value)} />
+          <input
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
           <label>Password</label>
         </InputFormWrapper>
 

@@ -69,11 +69,11 @@ const InputFormWrapper = styled.div`
 
     &:hover,
     &:focus {
-      border: 1px solid ${WHITE_COLOR_FORM};
+      border: 1px solid ${MAIN_YELLOW_COLOR};
     }
     &:focus ~ label {
       top: 1px;
-      color: ${WHITE_COLOR_FORM};
+      color: ${MAIN_YELLOW_COLOR};
     }
 
     @media (max-width: 768px) {
