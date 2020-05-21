@@ -8,17 +8,16 @@ import { GET_USER_REQUEST } from "../constants/api";
 import HomePage from "../pages/HomePage";
 
 const PrivateRoute: FC<{ path: string }> = ({ ...rest }) => {
-  const { value, error, loading } = useAsync(async () => {
-    await axios
-      .post(GET_USER_REQUEST, Cookies.get("token"))
-      .then((res) => {
-        return res;
-      })
-      .catch((error) => console.log(error));
-  }, [GET_USER_REQUEST]);
-
-  console.log(error);
-
+  const { value, error, loading } = useAsync(
+    () =>
+      axios
+        .post(GET_USER_REQUEST, Cookies.get("token"))
+        //But I don't shure it's correct
+        .then(({ data }: { data: { user: { role: number } } }) => data),
+    [GET_USER_REQUEST]
+  );
+  // It was a stupid mistake, because of inattention
+  // But I read more about the work of promise and async
   if (error) return <Redirect to="/" />;
 
   if (loading) return <div>Is Loading</div>;
@@ -26,13 +25,10 @@ const PrivateRoute: FC<{ path: string }> = ({ ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        value !== null ? (
-          <HomePage {...props} role={1} />
+        value !== undefined ? (
+          // I don't want to go to the cauldron/caldron in hell:D
+          <HomePage {...props} role={value.user.role} />
         ) : (
-          //I need to do so
-          // role={value.role} />
-          //But now ts hates me :(
-          //I fix it later
           <Redirect to="/" />
         )
       }

@@ -20,13 +20,12 @@ const AuthenticationPage: FC = () => {
   //Should return the result if only need to set token?
   //Also token can be set using header 'Set-Cookie' in response
   //Maybe it's better
-  const [state, sendRequest] = useAsyncFn(
-    async () =>
+  const [{ value, error, loading }, sendRequest] = useAsyncFn(
+    () =>
       //Axios <3
-      await axios
+      axios
         .post(LOGIN_REQUEST, { login, password })
-        .then((res) => Cookies.set("token", res.data))
-        .catch((error) => console.log(error)),
+        .then((res) => Cookies.set("token", res.data)),
     [LOGIN_REQUEST, login, password]
   );
 
