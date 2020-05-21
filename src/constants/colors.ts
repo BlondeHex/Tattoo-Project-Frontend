@@ -12,7 +12,7 @@ export const BACKGROUND_COLOR_NAV = "#a39cb526";
 export const BACKGROUND_COLOR_MAIN = "#45434c3d";
 
 export const BACKGROUND_COLOR_USERLIST = "#41414c5e";
-export const WHITE_COLOR_USERLIST = "#ffffffa3";
+export const COLOR_USERLIST = "#5F5D63";
 
 export const MAIN_YELLOW_COLOR = "#eec36c";
 export const MAIN_WHITE_COLOR = "#fff";

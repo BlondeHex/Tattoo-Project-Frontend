@@ -16,6 +16,29 @@ export function getUserList(count: number) {
         info: isOnline ? "Online" : "Offline",
         isOnline,
       },
+      profile: [
+        {
+          rus: "Биография",
+          info:
+            "Занимаюсь татуированием около двух лет. Участвую в фестивалях. Не работю в free-hand стилях.",
+        },
+        {
+          rus: "Возраст",
+          info: "22 года",
+        },
+        {
+          rus: "Контакты",
+          info: "8 912-222-22 getTattoo@gavrilov.ru",
+        },
+        {
+          rus: "Опыт работы",
+          info: "2 года",
+        },
+        {
+          rus: "Стоимость работы в час",
+          info: "От 2000₽",
+        },
+      ],
     };
   });
 }

@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 import {
   BACKGROUND_COLOR_MAIN,
   BACKGROUND_COLOR_USERLIST,
-  WHITE_COLOR_USERLIST,
+  COLOR_USERLIST,
   MAIN_YELLOW_COLOR,
   MAIN_WHITE_COLOR,
 } from "../../../../../constants/colors";
@@ -26,7 +26,7 @@ const WrapperFind = styled.div`
 `;
 
 const Tittle = styled.span`
-  color: ${MAIN_WHITE_COLOR};
+  color: ${MAIN_YELLOW_COLOR};
   font-family: sans-serif;
   vertical-align: top;
   font-size: 33px;
@@ -87,13 +87,14 @@ const ButtonFind = styled.button`
 
 const Table = styled.table`
   width: 100%;
-  border-spacing: 0 1em;
+  border-spacing: 0 8px;
   & tr {
-    color: ${WHITE_COLOR_USERLIST};
-    background-color: ${BACKGROUND_COLOR_USERLIST};
+    color: ${COLOR_USERLIST};
     border-radius: 20px;
     text-align: center;
-
+    &:nth-child(2n + 1) {
+      background-color: ${BACKGROUND_COLOR_USERLIST};
+    }
     & td {
       height: 50px;
       font-size: 16px;
@@ -147,7 +148,7 @@ const BtnDelete = styled.button`
   height: 25px;
   width: 25px;
   border-radius: 50%;
-  color: ${WHITE_COLOR_USERLIST};
+  color: ${COLOR_USERLIST};
   transition-property: transform;
   transition-duration: 1s;
   transition-timing-function: ease;

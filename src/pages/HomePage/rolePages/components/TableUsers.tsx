@@ -14,6 +14,7 @@ import {
   Tittle,
 } from "./styles/TableUsersStyle";
 import { getUserList } from "../../../../data/fakeUserList";
+import UserInfo from "./UserInfo";
 
 function TableUsers() {
   const [users, { updateAt, removeAt }] = useList(getUserList(15));
@@ -30,33 +31,25 @@ function TableUsers() {
     removeAt(n);
   };
 
-  const table = users.map((el, index) => (
-    <tr key={index}>
-      <td>
-        <Icon src={el.avatar} alt="Icon" />
-      </td>
-      <td> {el.login}</td>
-      <td> {el.role} </td>
-      <td> {el.status.info} </td>
-      <td>
-        <BtnDisconnect
-          disabled={!el.status.isOnline}
-          onClick={() => {
-            handleDisconnect(index);
-          }}
-        >
-          Dissconect
-        </BtnDisconnect>
-        <BtnDelete
-          onClick={() => {
-            handleDelete(index);
-          }}
-        >
-          X
-        </BtnDelete>
-      </td>
-    </tr>
-  ));
+  const table = users.map((el, index) => {
+    return (
+      <React.Fragment key={index}>
+        <tr onClick={() => {}}>
+          <td>
+            <Icon src={el.avatar} alt="Icon" />
+          </td>
+          <td> {el.login}</td>
+          <td> {el.role} </td>
+          <td> {el.status.info} </td>
+        </tr>
+        <tr>
+          <td colSpan={4}>
+            <UserInfo profile={el.profile} />
+          </td>
+        </tr>
+      </React.Fragment>
+    );
+  });
 
   return (
     <ContainerListUsers>
