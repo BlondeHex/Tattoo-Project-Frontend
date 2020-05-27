@@ -6,11 +6,14 @@ import {
   MAIN_YELLOW_COLOR,
 } from "../../constants/colors";
 
-const HomeWrapper = styled.div`
+const PageWrapper = styled.div`
   display: grid;
   grid-template-rows: 60px 1fr;
   background: ${BACKGROUND_COLOR_BASE};
   height: 100vh;
 `;
+const MainWrapper = styled.div`
+  padding: 15px 20px;
+`;
 
-export { HomeWrapper };
+export { PageWrapper, MainWrapper };

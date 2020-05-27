@@ -8,7 +8,6 @@ import {
 } from "../../../../../constants/colors";
 
 const ContainerListUsers = styled.main`
-  margin: 15px 20px;
   padding: 20px 5%;
   max-height: 100vh;
   background-color: ${BACKGROUND_COLOR_MAIN};
@@ -21,7 +20,7 @@ const ContainerListUsers = styled.main`
 
 const WrapperFind = styled.div`
   text-align: left;
-  height: 80px;
+  padding: 10px 0;
   width: 100%;
 `;
 
@@ -89,11 +88,15 @@ const Table = styled.table`
   width: 100%;
   border-spacing: 0 8px;
   & tr {
+    cursor: pointer;
     color: ${COLOR_USERLIST};
     border-radius: 20px;
     text-align: center;
     &:nth-child(2n + 1) {
       background-color: ${BACKGROUND_COLOR_USERLIST};
+    }
+    &.active {
+      color: ${MAIN_YELLOW_COLOR};
     }
     & td {
       height: 50px;

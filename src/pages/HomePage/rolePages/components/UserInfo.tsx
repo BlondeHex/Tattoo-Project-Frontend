@@ -1,19 +1,25 @@
 import React, { FC } from "react";
 import _ from "lodash";
-import Carousel from "react-elastic-carousel";
+
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 import {
   InfoWrapper,
   Info,
   ProfileWrapper,
   InfoTittle,
+  ImgGallery,
+  CarouselWrapper,
+  ButtonWrapper,
 } from "./styles/UserInfoStyle";
 
-//CHANGE ANY. DON'T FORGET, NASTYA
-const UserInfo: FC<{ profile: Array<{ rus: string; info: string }> }> = (
-  profile
-) => {
-  const showProfile = profile.profile.map((el) => {
+const UserInfo: FC<{
+  profile: Array<{ rus: string; info: string }>;
+  portfolio: Array<string>;
+  delete: () => void;
+}> = (props) => {
+  const showProfile = props.profile.map((el) => {
     return (
       <React.Fragment key={el.rus}>
         <InfoTittle>{`${el.rus}:`}</InfoTittle>
@@ -22,17 +28,39 @@ const UserInfo: FC<{ profile: Array<{ rus: string; info: string }> }> = (
     );
   });
 
+  const showPortfolio = props.portfolio.map((el, i) => {
+    return <ImgGallery key={i} image={el} />;
+  });
+
+  const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 3000 },
+      items: 7,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 6,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
+
   return (
     <ProfileWrapper>
       <InfoWrapper>{showProfile}</InfoWrapper>
-      <Carousel>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
-        <div>6</div>
-      </Carousel>
+      <CarouselWrapper>
+        <Carousel responsive={responsive}>{showPortfolio}</Carousel>
+      </CarouselWrapper>
+      <ButtonWrapper>
+        <button onClick={() => props.delete()}>Одобрить</button>
+        <button onClick={() => props.delete()}>Отклонить</button>
+      </ButtonWrapper>
     </ProfileWrapper>
   );
 };

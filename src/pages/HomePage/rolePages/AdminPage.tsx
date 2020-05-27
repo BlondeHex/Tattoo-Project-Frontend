@@ -1,15 +1,18 @@
 import React from "react";
 
-import { HomeWrapper } from "../HomePageStyles";
+import { PageWrapper, MainWrapper } from "../HomePageStyles";
 import TableUsers from "./components/TableUsers";
 import Header from "./components/Header";
 
 function AdminPage() {
   return (
-    <HomeWrapper>
+    <PageWrapper>
       <Header />
-      <TableUsers />
-    </HomeWrapper>
+
+      <MainWrapper>
+        <TableUsers />
+      </MainWrapper>
+    </PageWrapper>
   );
 }
 

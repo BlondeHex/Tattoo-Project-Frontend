@@ -39,6 +39,16 @@ export function getUserList(count: number) {
           info: "От 2000₽",
         },
       ],
+      portfolio: [
+        process.env.PUBLIC_URL + "/image/tattoo/1.jpg",
+        process.env.PUBLIC_URL + "/image/tattoo/2.jpg",
+        process.env.PUBLIC_URL + "/image/tattoo/3.jpg",
+        process.env.PUBLIC_URL + "/image/tattoo/4.jpg",
+        process.env.PUBLIC_URL + "/image/tattoo/5.jpg",
+        process.env.PUBLIC_URL + "/image/tattoo/6.jpeg",
+        process.env.PUBLIC_URL + "/image/tattoo/7.jpeg",
+        process.env.PUBLIC_URL + "/image/tattoo/8.jpg",
+      ],
     };
   });
 }
